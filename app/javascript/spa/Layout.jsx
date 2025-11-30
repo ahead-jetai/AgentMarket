@@ -6,10 +6,8 @@ export const Layout = ({ children }) => {
   const location = useLocation();
   const [cartCount, setCartCount] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const lastScrollY = useRef(0);
 
   useEffect(() => {
     // Trigger loading state on route change
@@ -42,24 +40,7 @@ export const Layout = ({ children }) => {
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY || 0;
-
-      setIsScrolled(currentY > 8);
-
-      if (currentY < 80) {
-        setShowHeader(true);
-        lastScrollY.current = currentY;
-        return;
-      }
-
-      if (currentY > lastScrollY.current + 4) {
-        // Scrolling down – hide
-        setShowHeader(false);
-      } else if (currentY < lastScrollY.current - 4) {
-        // Scrolling up – reveal
-        setShowHeader(true);
-      }
-
-      lastScrollY.current = currentY;
+      setIsScrolled(currentY > 20);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -120,7 +101,7 @@ export const Layout = ({ children }) => {
         )}
       </AnimatePresence>
 
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col overflow-x-hidden bg-[radial-gradient(circle_at_top,_rgba(45,212,191,0.18),_transparent_60%)]">
+      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col overflow-x-hidden">
       {/* Loading Bar */}
       <AnimatePresence>
         {isLoading && (
@@ -135,11 +116,13 @@ export const Layout = ({ children }) => {
       </AnimatePresence>
 
       <header
-        className={`sticky top-0 z-40 border-b border-slate-800/60 bg-slate-950/60 backdrop-blur-xl transform-gpu transition duration-300 ${
-          showHeader ? "translate-y-0" : "-translate-y-full"
-        } ${isScrolled ? "shadow-[0_18px_45px_rgba(15,23,42,0.9)]" : "border-transparent bg-slate-950/30"}`}
+        className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ease-in-out ${
+          isScrolled
+            ? "border-slate-800/80 bg-slate-950/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(15,23,42,0.8)] py-3"
+            : "border-transparent bg-transparent py-6"
+        }`}
       >
-        <div className="mx-auto max-w-7xl px-4 md:px-8 py-4 flex items-center justify-between">
+        <div className="mx-auto max-w-7xl px-4 md:px-8 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <span className="h-8 w-8 rounded-2xl bg-gradient-to-br from-emerald-400 via-emerald-300 to-sky-400 shadow-[0_0_24px_rgba(16,185,129,0.8)]" />
             <div className="flex flex-col leading-tight">

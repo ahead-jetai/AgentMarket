@@ -42,14 +42,15 @@
 
 <div align="center">
 
-### 🏠 Homepage with Interactive Dashboard
-<img src="https://via.placeholder.com/600x400/0f172a/10b981?text=Hero+Section" alt="Homepage" width="600" />
+### 🛍️ Agent Product Page
+<img src="app/assets/images/agent-market-product-page.png" alt="AgentMarket Product Page showing AI agent details with capabilities and integrations" width="800" />
 
-### 🛍️ Agent Browse & Detail Pages
-<img src="https://via.placeholder.com/600x400/0f172a/10b981?text=Product+Page" alt="Product Page" width="600" />
+*Detailed agent pages showcase key capabilities, tech stack, integrations, and pricing with custom AI-themed icons*
 
-### ✨ Smooth Loading Transitions
-<img src="https://via.placeholder.com/600x400/0f172a/10b981?text=Loading+Animation" alt="Loading" width="600" />
+### 📊 Workspace Dashboard
+<img src="app/assets/images/agent-market-dashboard.png" alt="AgentMarket Workspace Dashboard with pods, pipelines, and live agent activity" width="800" />
+
+*Interactive dashboard displays agent pods, performance metrics, pipeline stages, and real-time activity feeds*
 
 </div>
 

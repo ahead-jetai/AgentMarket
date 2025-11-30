@@ -48,10 +48,9 @@ export const HomePage = () => {
         initial="hidden"
         animate="visible"
         variants={staggeredSection}
-        className="relative -mx-4 md:-mx-8 lg:-mx-12 overflow-hidden"
+        className="relative -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-6 lg:-mt-8 overflow-hidden bg-gradient-to-b from-emerald-500/15"
       >
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-emerald-500/15 via-slate-950 to-slate-950" />
-        <div className="relative w-full px-4 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36 min-h-[75vh]">
+        <div className="relative w-full px-4 md:px-8 lg:px-12 pt-24 pb-20 md:py-28 lg:py-36 min-h-[75vh]">
           <div className="relative flex flex-col items-center text-center gap-12 lg:gap-16">
             <motion.div
               variants={fadeUp}
@@ -93,7 +92,6 @@ export const HomePage = () => {
             </motion.div>
 
             <motion.div variants={fadeUp} className="relative w-full lg:max-w-none">
-              <div className="pointer-events-none absolute -inset-16 bg-[radial-gradient(circle_at_top,_rgba(45,212,191,0.22),transparent_55%)] opacity-80" />
               <motion.div
                 className="relative overflow-hidden rounded-[32px] border border-slate-700/70 bg-slate-950/80 shadow-[0_40px_80px_rgba(15,23,42,0.9)] backdrop-blur-xl p-6 md:p-10 lg:p-12 text-left w-full"
                 animate={{ y: [0, -10, 0] }}

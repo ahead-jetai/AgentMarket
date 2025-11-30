@@ -9,7 +9,6 @@ class Api::CartItemsController < ApplicationController
     cart_item = CartItem.find_or_initialize_by(session_id: session_id, agent_id: params[:agent_id])
     cart_item.quantity = (cart_item.quantity || 0) + params.fetch(:quantity, 1).to_i
     cart_item.save!
-
     render json: { ok: true, id: cart_item.id }
   end
 

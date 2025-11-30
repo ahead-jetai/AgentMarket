@@ -197,111 +197,113 @@ export const ProductPage = () => {
   return (
     <>
       {showModal && <AddedToCartModal />}
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-emerald-300"
-        >
-          <span className="mr-1">←</span>
-          Back
-        </button>
-      </div>
-      <div className="max-w-4xl mx-auto">
-        <div className="space-y-10">
-          <div className="text-center space-y-6">
-            {agent.icon_svg && (
-              <div className="flex justify-center">
-                <div
-                  className="h-24 w-24 text-emerald-400 rounded-3xl border border-slate-800 bg-slate-900/50 p-5 shadow-[0_0_40px_rgba(16,185,129,0.2)] backdrop-blur-sm"
-                  dangerouslySetInnerHTML={{ __html: agent.icon_svg }}
-                />
-              </div>
-            )}
-            
-            <div className="space-y-2">
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">{agent.category_name}</p>
-              <h1 className="text-4xl md:text-5xl font-bold text-slate-50 tracking-tight">{agent.name}</h1>
-              <p className="text-sm text-slate-500">SKU: {agent.sku}</p>
-            </div>
-
-            <p className="text-lg md:text-xl text-slate-300 leading-relaxed whitespace-pre-line max-w-2xl mx-auto">
-              {agent.description}
-            </p>
-
-            <div className="flex flex-col items-center gap-4 pt-4">
-              <p className="text-3xl md:text-4xl font-semibold text-emerald-300">
-                ${(agent.price / 100).toFixed(0)} <span className="text-lg text-slate-500 font-normal">/ month</span>
-              </p>
-              <button
-                type="button"
-                onClick={addToCart}
-                disabled={adding}
-                className="inline-flex items-center rounded-full bg-emerald-500 px-8 py-3 text-lg font-medium text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:bg-emerald-400 disabled:opacity-70 transition-all hover:scale-105"
-              >
-                {adding ? "Adding…" : "Add to Team"}
-              </button>
-            </div>
+      <div className="relative -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-6 lg:-mt-8 bg-gradient-to-b from-emerald-500/15 min-h-screen">
+        <div className="relative w-full px-4 md:px-8 lg:px-12 pt-24 pb-20 space-y-6">
+          <div className="flex items-center justify-between">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-emerald-300"
+            >
+              <span className="mr-1">←</span>
+              Back
+            </button>
           </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-10">
+              <div className="text-center space-y-6">
+                {agent.icon_svg && (
+                  <div className="flex justify-center">
+                    <div
+                      className="h-24 w-24 text-emerald-400 rounded-3xl border border-slate-800 bg-slate-900/50 p-5 shadow-[0_0_40px_rgba(16,185,129,0.2)] backdrop-blur-sm"
+                      dangerouslySetInnerHTML={{ __html: agent.icon_svg }}
+                    />
+                  </div>
+                )}
+                
+                <div className="space-y-2">
+                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-emerald-300">{agent.category_name}</p>
+                  <h1 className="text-4xl md:text-5xl font-bold text-slate-50 tracking-tight">{agent.name}</h1>
+                  <p className="text-sm text-slate-500">SKU: {agent.sku}</p>
+                </div>
 
-          {extra && (
-            <div className="grid gap-10 md:grid-cols-2 pt-10 border-t border-slate-800/60">
-              <div className="space-y-6">
-                <h2 className="text-xl font-semibold text-slate-50 flex items-center gap-3">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 text-sm border border-emerald-500/20">⚙️</span>
-                  Key Capabilities
-                </h2>
-                <ul className="grid gap-4">
-                  {extra.features.map((f, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-slate-300 group">
-                      <span className="mt-0.5 text-xl opacity-80 group-hover:opacity-100 transition-opacity">{f.icon}</span>
-                      <span className="text-base leading-snug">{f.label}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-lg md:text-xl text-slate-300 leading-relaxed whitespace-pre-line max-w-2xl mx-auto">
+                  {agent.description}
+                </p>
+
+                <div className="flex flex-col items-center gap-4 pt-4">
+                  <p className="text-3xl md:text-4xl font-semibold text-emerald-300">
+                    ${(agent.price / 100).toFixed(0)} <span className="text-lg text-slate-500 font-normal">/ month</span>
+                  </p>
+                  <button
+                    type="button"
+                    onClick={addToCart}
+                    disabled={adding}
+                    className="inline-flex items-center rounded-full bg-emerald-500 px-8 py-3 text-lg font-medium text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:bg-emerald-400 disabled:opacity-70 transition-all hover:scale-105"
+                  >
+                    {adding ? "Adding…" : "Add to Team"}
+                  </button>
+                </div>
               </div>
 
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-50 flex items-center gap-3 mb-4">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-500/10 text-sky-300 text-sm border border-sky-500/20">🔌</span>
-                    Integrations
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {extra.integrations.map((name) => (
-                      <span
-                        key={name}
-                        className="inline-flex items-center rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-sm text-slate-200 hover:border-sky-500/50 hover:text-sky-100 transition-colors cursor-default"
-                      >
-                        {name}
-                      </span>
-                    ))}
+              {extra && (
+                <div className="grid gap-10 md:grid-cols-2 pt-10 border-t border-slate-800/60">
+                  <div className="space-y-6">
+                    <h2 className="text-xl font-semibold text-slate-50 flex items-center gap-3">
+                      <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300 text-sm border border-emerald-500/20">⚙️</span>
+                      Key Capabilities
+                    </h2>
+                    <ul className="grid gap-4">
+                      {extra.features.map((f, idx) => (
+                        <li key={idx} className="flex items-start gap-3 text-slate-300 group">
+                          <span className="mt-0.5 text-xl opacity-80 group-hover:opacity-100 transition-opacity">{f.icon}</span>
+                          <span className="text-base leading-snug">{f.label}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-8">
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-50 flex items-center gap-3 mb-4">
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-sky-500/10 text-sky-300 text-sm border border-sky-500/20">🔌</span>
+                        Integrations
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {extra.integrations.map((name) => (
+                          <span
+                            key={name}
+                            className="inline-flex items-center rounded-lg border border-slate-700 bg-slate-900/60 px-3 py-1.5 text-sm text-slate-200 hover:border-sky-500/50 hover:text-sky-100 transition-colors cursor-default"
+                          >
+                            {name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-semibold text-slate-50 flex items-center gap-3 mb-4">
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/10 text-purple-300 text-sm border border-purple-500/20">🧱</span>
+                        Tech Stack
+                      </h3>
+                      <ul className="flex flex-wrap gap-2">
+                        {extra.stack.map((tech) => (
+                          <li
+                            key={tech}
+                            className="inline-flex items-center rounded-lg bg-slate-800/40 px-3 py-1.5 text-sm text-slate-300 ring-1 ring-slate-700/60"
+                          >
+                            {tech}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold text-slate-50 flex items-center gap-3 mb-4">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/10 text-purple-300 text-sm border border-purple-500/20">🧱</span>
-                    Tech Stack
-                  </h3>
-                  <ul className="flex flex-wrap gap-2">
-                    {extra.stack.map((tech) => (
-                      <li
-                        key={tech}
-                        className="inline-flex items-center rounded-lg bg-slate-800/40 px-3 py-1.5 text-sm text-slate-300 ring-1 ring-slate-700/60"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

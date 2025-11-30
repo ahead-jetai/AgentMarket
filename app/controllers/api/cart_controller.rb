@@ -1,4 +1,6 @@
 class Api::CartController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def show
     items = CartItem.includes(:agent).where(session_id: session.id.to_s)
 
@@ -21,5 +23,10 @@ class Api::CartController < ApplicationController
       items: serialized_items,
       subtotal: subtotal
     }
+  end
+
+  def destroy
+    CartItem.where(session_id: session.id.to_s).destroy_all
+    render json: { ok: true }
   end
 end

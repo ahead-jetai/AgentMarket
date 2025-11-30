@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     resources :cart_items, only: %i[create update destroy]
     get "cart", to: "cart#show"
+    delete "cart", to: "cart#destroy"
   end
 
   root "home#index"
