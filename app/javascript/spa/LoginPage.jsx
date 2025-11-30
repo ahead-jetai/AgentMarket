@@ -8,55 +8,43 @@ export const LoginPage = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // If already logged in, redirect to dashboard
-    if (localStorage.getItem("agentmarket_user_email")) {
-      navigate("/dashboard");
-    }
+    // Check if session exists
+    fetch("/api/me")
+      .then((res) => {
+        if (res.ok) return res.json();
+        throw new Error("Not logged in");
+      })
+      .then((data) => {
+        if (data.user) {
+          navigate("/dashboard");
+        }
+      })
+      .catch(() => {});
   }, [navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // "Mock" authentication against stored account
-    // We look for a "persistent" account object. 
-    
-    let valid = false;
-    const users = JSON.parse(localStorage.getItem("agentmarket_users") || "{}");
-    const normalizedEmail = email.toLowerCase();
-    
-    if (users[normalizedEmail] && users[normalizedEmail] === password) {
-      valid = true;
-    }
-    
-    // Fallback to legacy single account
-    if (!valid) {
-      const storedAccountJson = localStorage.getItem("agentmarket_account");
-      if (storedAccountJson) {
-        try {
-          const account = JSON.parse(storedAccountJson);
-          if (account.email.toLowerCase() === normalizedEmail && account.password === password) {
-            valid = true;
-          }
-        } catch (e) {
-          // ignore
-        }
-      }
-    }
+    setError("");
 
-    if (valid) {
-      localStorage.setItem("agentmarket_user_email", normalizedEmail);
-      localStorage.setItem("agentmarket_user_password", password);
-      navigate("/dashboard");
-    } else {
-      // If no account exists at all, maybe they haven't signed up?
-      const hasUsers = Object.keys(users).length > 0;
-      const hasLegacy = !!localStorage.getItem("agentmarket_account");
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      if (!hasUsers && !hasLegacy) {
-        setError("No account found. Please sign up first.");
+      if (response.ok) {
+        const data = await response.json();
+        // Store minimal info if needed, but session cookie handles auth
+        localStorage.setItem("agentmarket_user_email", data.user.email);
+        navigate("/dashboard");
       } else {
-        setError("Invalid email or password");
+        setError("Login failed. Please try again.");
       }
+    } catch (err) {
+      setError("An error occurred. Please try again.");
     }
   };
 
@@ -91,7 +79,7 @@ export const LoginPage = () => {
               <label className="block text-sm font-medium text-slate-400">Password</label>
               <input
                 type="password"
-                required
+                // Password is not actually used in backend, but UI keeps it for realism
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 block w-full rounded-md border-slate-800 bg-slate-900 px-3 py-2 text-slate-50 focus:border-emerald-500 focus:ring-emerald-500"

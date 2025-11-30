@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
   namespace :api do
+    post "login", to: "sessions#create"
+    delete "logout", to: "sessions#destroy"
+    get "me", to: "sessions#show"
+    post "purchases", to: "purchases#create"
+
+    namespace :agents do
+      scope ":agent_slug" do
+        resources :runs, only: [:create, :index]
+      end
+    end
+
     get "home", to: "home#index"
     get "categories/:slug", to: "categories#show"
     get "agents/:id", to: "agents#show"

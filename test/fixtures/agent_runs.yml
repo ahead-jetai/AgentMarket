@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team: one
+  agent: one
+  status: MyString
+  input_payload: 
+  output_payload: 
+  error_message: MyText
+
+two:
+  team: two
+  agent: two
+  status: MyString
+  input_payload: 
+  output_payload: 
+  error_message: MyText

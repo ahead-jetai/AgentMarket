@@ -8,6 +8,8 @@ class Api::CartController < ApplicationController
       agent = item.agent
       {
         id: item.id,
+        agent_id: agent.id,
+        sku: agent.sku,
         quantity: item.quantity,
         name: agent.name,
         price: agent.price,

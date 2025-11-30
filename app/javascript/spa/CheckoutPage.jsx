@@ -79,7 +79,8 @@ export const CheckoutPage = () => {
     if (validate()) {
       // Persist purchased agents
       const newAgents = cart.items.map(item => ({
-        id: item.id,
+        id: item.agent_id, // Ensure we use agent_id
+        sku: item.sku,
         name: item.name,
         category: item.category_name,
         price: item.price,
@@ -105,12 +106,20 @@ export const CheckoutPage = () => {
 
       localStorage.setItem("agentmarket_purchased_agents", JSON.stringify(updatedAgents));
       
-      // Clear cart on backend
-      fetch("/api/cart", { method: "DELETE" })
-        .then(() => {
-          // Navigate to confirmation
-          navigate("/order/confirmation", { state: { purchasedAgents: newAgents } });
-        });
+      // Attempt to persist to backend (if logged in)
+      const agentIds = newAgents.map(a => a.id);
+      fetch("/api/purchases", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ agent_ids: agentIds })
+      }).then(() => {
+         // Clear cart on backend regardless of purchase success (as we rely on localStorage/Sync)
+         // Actually, if purchase failed due to 500, we might want to keep cart? 
+         // But "Fake Checkout" implies we just move on.
+         return fetch("/api/cart", { method: "DELETE" });
+      }).then(() => {
+         navigate("/order/confirmation", { state: { purchasedAgents: newAgents } });
+      });
     }
   };
 
