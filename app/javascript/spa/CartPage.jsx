@@ -33,16 +33,20 @@ export const CartPage = () => {
 
   if (cart.items.length === 0) {
     return (
-      <div className="space-y-5">
-        <button
-          type="button"
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-emerald-300"
-        >
-          <span className="mr-1">←</span>
-          Back
-        </button>
-        <p className="text-slate-300 text-base">Your cart is empty. Browse agents to get started.</p>
+      <div className="relative -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-6 lg:-mt-8 bg-gradient-to-b from-emerald-500/15 min-h-screen">
+        <div className="relative w-full px-4 md:px-8 lg:px-12 pt-24 pb-20">
+          <div className="space-y-5">
+            <button
+              type="button"
+              onClick={() => navigate(-1)}
+              className="inline-flex items-center text-sm font-medium text-slate-400 hover:text-emerald-300"
+            >
+              <span className="mr-1">←</span>
+              Back
+            </button>
+            <p className="text-slate-300 text-base">Your cart is empty. Browse agents to get started.</p>
+          </div>
+        </div>
       </div>
     );
   }
