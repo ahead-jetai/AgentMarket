@@ -71,22 +71,43 @@ export const Layout = ({ children }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[100] bg-slate-950 flex items-center justify-center"
           >
-            <div className="flex flex-col items-center gap-4">
-              {/* Animated spinner */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="h-12 w-12 rounded-full border-4 border-slate-800 border-t-emerald-400"
-              />
+            <div className="flex flex-col items-center gap-6">
+              {/* Animated spinner with breathing effect */}
+              <div className="relative">
+                <motion.div
+                  animate={{ 
+                    rotate: 360,
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 2, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                  className="h-16 w-16 rounded-full border-4 border-slate-800 border-t-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.3)]"
+                />
+                {/* Pulse ring */}
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.4, 1],
+                    opacity: [0.5, 0, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className="absolute inset-0 rounded-full border-2 border-emerald-400/50"
+                />
+              </div>
               {/* Loading text */}
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-sm text-slate-400"
+                transition={{ delay: 0.2, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="text-sm text-slate-400 font-light tracking-wide"
               >
                 Loading...
               </motion.p>
@@ -147,10 +168,13 @@ export const Layout = ({ children }) => {
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ 
+              duration: 0.6, 
+              ease: [0.16, 1, 0.3, 1]
+            }}
             className="w-full px-4 md:px-8 lg:px-12 pt-4 md:pt-6 lg:pt-8 pb-10 md:pb-14 lg:pb-16"
           >
             {children}
