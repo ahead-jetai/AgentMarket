@@ -72,8 +72,16 @@ export const CartPage = () => {
               className="flex gap-5 rounded-xl border border-slate-800 bg-slate-950/60 p-5 items-center justify-between"
             >
               <div className="flex items-center gap-4">
-                <div className="h-20 w-32 overflow-hidden rounded-md bg-slate-900">
-                  <img src={item.image_url} alt={item.name} className="h-full w-full object-cover" />
+                <div className="h-20 w-32 overflow-hidden rounded-md bg-slate-900 relative">
+                  <img src={item.image_url} alt={item.name} className="h-full w-full object-cover opacity-20" />
+                  {item.icon_svg && (
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                      <div
+                        className="h-12 w-12 text-emerald-400 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
+                        dangerouslySetInnerHTML={{ __html: item.icon_svg }}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div>
                   <p className="text-base font-medium text-slate-50">{item.name}</p>
@@ -127,12 +135,13 @@ export const CartPage = () => {
           </div>
           <button
             type="button"
+            onClick={() => navigate("/checkout")}
             className="w-full rounded-md bg-emerald-500 px-4 py-2 text-base font-medium text-slate-950 shadow-sm hover:bg-emerald-400"
           >
-            Fake checkout (coming soon)
+            Proceed to Checkout
           </button>
           <p className="text-xs text-slate-500">
-            This is a prototype: checkout is not wired to real payments yet.
+            Enter fake details to complete the order.
           </p>
         </aside>
       </div>

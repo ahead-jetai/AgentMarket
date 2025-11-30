@@ -46,12 +46,20 @@ export const CategoryPage = () => {
             className="group relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950/70 p-4 hover:border-emerald-400/80 hover:bg-slate-900/80 transition-colors flex flex-col shadow-[0_18px_40px_rgba(15,23,42,0.9)]"
           >
             <div className="pointer-events-none absolute inset-0 opacity-0 bg-gradient-to-br from-emerald-500/15 via-transparent to-sky-500/15 transition-opacity duration-300 group-hover:opacity-100" />
-            <div className="relative aspect-video mb-3 overflow-hidden rounded-xl bg-slate-900/80">
-              <img
-                src={agent.image_url}
-                alt={agent.name}
-                className="h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
-              />
+            <div className="relative aspect-video mb-3 overflow-hidden rounded-xl bg-slate-900/80 flex items-center justify-center border border-slate-800/50">
+              {/* Replaced image with subtle gradient background to make icons cleaner */}
+              <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800/50 to-slate-900" />
+              
+              {agent.icon_svg ? (
+                <div className="relative z-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <div
+                    className="h-16 w-16 md:h-20 md:w-20 text-emerald-400 group-hover:text-emerald-300 transition-colors drop-shadow-[0_0_12px_rgba(16,185,129,0.5)]"
+                    dangerouslySetInnerHTML={{ __html: agent.icon_svg }}
+                  />
+                </div>
+              ) : (
+                <div className="relative z-10 h-16 w-16 rounded-full bg-slate-800/50" />
+              )}
             </div>
             <h3 className="relative text-base md:text-lg font-semibold text-slate-50 group-hover:text-emerald-50 line-clamp-2">
               {agent.name}

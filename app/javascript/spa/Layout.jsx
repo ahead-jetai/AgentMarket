@@ -8,11 +8,15 @@ export const Layout = ({ children }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
     // Trigger loading state on route change
     setIsLoading(true);
+
+    // Check login status
+    setIsLoggedIn(!!localStorage.getItem("agentmarket_user_email"));
 
     // Simulate minimum loading time for smooth transition
     const loadingTimer = setTimeout(() => {
@@ -161,6 +165,15 @@ export const Layout = ({ children }) => {
                 </span>
               )}
             </Link>
+            {isLoggedIn ? (
+              <Link to="/dashboard" className="text-slate-300 hover:text-emerald-300 transition-colors">
+                Dashboard
+              </Link>
+            ) : (
+              <Link to="/login" className="text-slate-300 hover:text-emerald-300 transition-colors">
+                Login
+              </Link>
+            )}
           </nav>
         </div>
       </header>

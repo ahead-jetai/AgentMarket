@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -25,6 +25,13 @@ const MotionLink = motion(Link);
 export const HomePage = () => {
   const [featured, setFeatured] = useState([]);
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("agentmarket_user_email")) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     fetch("/api/home")

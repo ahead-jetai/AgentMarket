@@ -15,6 +15,7 @@ class Api::CategoriesController < ApplicationController
           name: agent.name,
           price: agent.price,
           image_url: agent.image_url,
+          icon_svg: agent.icon_svg,
           short_description: agent.description.truncate(80)
         }
       end

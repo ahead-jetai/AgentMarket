@@ -10,6 +10,7 @@ class Api::AgentsController < ApplicationController
         price: agent.price,
         image_url: agent.image_url,
         description: agent.description,
+        icon_svg: agent.icon_svg,
         category_name: agent.category.name
       }
     }

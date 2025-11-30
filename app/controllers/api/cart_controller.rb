@@ -10,6 +10,7 @@ class Api::CartController < ApplicationController
         name: agent.name,
         price: agent.price,
         image_url: agent.image_url,
+        icon_svg: agent.icon_svg,
         category_name: agent.category.name
       }
     end

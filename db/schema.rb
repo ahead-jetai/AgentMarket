@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_29_222417) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_29_230000) do
   create_table "agents", force: :cascade do |t|
     t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.text "description"
+    t.text "icon_svg"
     t.string "image_url"
     t.string "name"
     t.integer "price"

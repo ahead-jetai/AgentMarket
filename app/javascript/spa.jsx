@@ -6,6 +6,11 @@ import { CategoriesPage } from "./spa/CategoriesPage";
 import { CategoryPage } from "./spa/CategoryPage";
 import { ProductPage } from "./spa/ProductPage";
 import { CartPage } from "./spa/CartPage";
+import { CheckoutPage } from "./spa/CheckoutPage";
+import { OrderConfirmationPage } from "./spa/OrderConfirmationPage";
+import { SignupPage } from "./spa/SignupPage";
+import { LoginPage } from "./spa/LoginPage";
+import { DashboardPage } from "./spa/DashboardPage";
 import { Layout } from "./spa/Layout";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,6 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
             <Route path="/categories/:slug" element={<CategoryPage />} />
             <Route path="/agents/:id" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/order/confirmation" element={<OrderConfirmationPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>
