@@ -35,6 +35,13 @@ module Api
                             }
                           end
 
+        daily_revenue = AgentPurchase.joins(:agent)
+                                     .where('agent_purchases.created_at >= ?', 30.days.ago.beginning_of_day)
+                                     .group("DATE(agent_purchases.created_at)")
+                                     .sum('agents.price')
+                                     .map { |date, price| { date: date, revenue: price / 100.0 } }
+                                     .sort_by { |x| x[:date] }
+
         metrics = {
           users_count: User.count,
           teams_count: Team.count,
@@ -49,7 +56,8 @@ module Api
           revenue: {
             total: total_revenue,
             recent_purchases: recent_purchases,
-            top_agents: top_agents
+            top_agents: top_agents,
+            daily_revenue: daily_revenue
           },
           tables: tables
         }
