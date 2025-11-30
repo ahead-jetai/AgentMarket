@@ -1,0 +1,32 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HomePage } from "./spa/HomePage";
+import { CategoriesPage } from "./spa/CategoriesPage";
+import { CategoryPage } from "./spa/CategoryPage";
+import { ProductPage } from "./spa/ProductPage";
+import { CartPage } from "./spa/CartPage";
+import { Layout } from "./spa/Layout";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const rootElement = document.getElementById("ai-agents-root");
+  if (!rootElement) return;
+
+  const root = createRoot(rootElement);
+
+  root.render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/categories/:slug" element={<CategoryPage />} />
+            <Route path="/agents/:id" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+});

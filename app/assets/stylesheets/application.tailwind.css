@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .premium-section-wrapper {
+    @apply relative -mx-4 md:-mx-8 lg:-mx-12;
+  }
+
+  .premium-section-inner {
+    @apply relative w-full px-4 md:px-8 lg:px-12 py-20 md:py-28 lg:py-36;
+  }
+
+  .premium-header {
+    @apply text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-slate-50 leading-[1.1];
+  }
+
+  .premium-subtext {
+    @apply text-xl md:text-2xl text-slate-300 leading-relaxed;
+  }
+
+  .premium-label {
+    @apply text-sm md:text-base font-bold uppercase tracking-[0.25em];
+  }
+
+  .premium-card {
+    @apply rounded-[32px] border border-slate-800/60 bg-slate-950/40 p-8 md:p-10 lg:p-12 shadow-2xl backdrop-blur-md hover:bg-slate-900/60 hover:border-emerald-500/30 transition-all duration-500;
+  }
+
+  .premium-card-title {
+    @apply text-2xl md:text-3xl font-bold text-slate-50;
+  }
+}
+
+@layer base {
+  html {
+    @apply text-[16px] md:text-[17px] lg:text-[18px];
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 leading-relaxed antialiased;
+  }
+}
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 30s linear infinite;
+}
