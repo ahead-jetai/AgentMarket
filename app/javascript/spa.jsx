@@ -11,6 +11,7 @@ import { OrderConfirmationPage } from "./spa/OrderConfirmationPage";
 import { SignupPage } from "./spa/SignupPage";
 import { LoginPage } from "./spa/LoginPage";
 import { DashboardPage } from "./spa/DashboardPage";
+import { ProfilePage } from "./spa/ProfilePage";
 import { WorkspacePage } from "./spa/WorkspacePage";
 import { Layout } from "./spa/Layout";
 
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/workspace" element={<WorkspacePage />} />
           </Routes>
         </Layout>

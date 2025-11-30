@@ -62,12 +62,6 @@ export const DashboardPage = () => {
     initDashboard();
   }, [navigate]);
 
-  const handleLogout = async () => {
-    await fetch("/api/logout", { method: "DELETE" });
-    localStorage.removeItem("agentmarket_user_email");
-    navigate("/");
-  };
-
   if (loading) return <div className="p-12 text-center text-slate-400">Loading dashboard...</div>;
 
   return (
@@ -85,12 +79,6 @@ export const DashboardPage = () => {
               >
                 Launch Workspace
               </Link>
-              <button
-                onClick={handleLogout}
-                className="text-sm font-medium text-slate-400 hover:text-emerald-300"
-              >
-                Log out
-              </button>
           </div>
         </div>
 
