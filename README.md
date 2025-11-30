@@ -13,7 +13,7 @@
 
 [Features](#-features) • [Demo](#-demo) • [Tech Stack](#-tech-stack) • [Setup](#-quick-start) • [Architecture](#-architecture)
 
-<img src="https://via.placeholder.com/800x400/0f172a/10b981?text=AgentMarket+Dashboard" alt="AgentMarket Dashboard" width="800" />
+![Agent Market Dashboard](/app/assets/images/agent-market-dashboard.png)
 
 </div>
 
@@ -43,12 +43,12 @@
 <div align="center">
 
 ### 🛍️ Agent Product Page
-<img src="app/assets/images/agent-market-product-page.png" alt="AgentMarket Product Page showing AI agent details with capabilities and integrations" width="800" />
+![Agent Market Product Page](/app/assets/images/agent-market-product-page.png)
 
 *Detailed agent pages showcase key capabilities, tech stack, integrations, and pricing with custom AI-themed icons*
 
 ### 📊 Workspace Dashboard
-<img src="app/assets/images/agent-market-dashboard.png" alt="AgentMarket Workspace Dashboard with pods, pipelines, and live agent activity" width="800" />
+![Agent Market Dashboard](/app/assets/images/agent-market-dashboard.png)
 
 *Interactive dashboard displays agent pods, performance metrics, pipeline stages, and real-time activity feeds*
 
