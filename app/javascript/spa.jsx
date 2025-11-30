@@ -13,6 +13,7 @@ import { LoginPage } from "./spa/LoginPage";
 import { DashboardPage } from "./spa/DashboardPage";
 import { ProfilePage } from "./spa/ProfilePage";
 import { WorkspacePage } from "./spa/WorkspacePage";
+import { AdminDashboardPage } from "./spa/AdminDashboardPage";
 import { Layout } from "./spa/Layout";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/workspace" element={<WorkspacePage />} />
+            <Route path="/admin" element={<AdminDashboardPage />} />
           </Routes>
         </Layout>
       </BrowserRouter>

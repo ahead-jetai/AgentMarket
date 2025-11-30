@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { LogoIcon } from "./LogoIcon";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -105,7 +106,10 @@ export const HomePage = () => {
                       <span className="flex h-3 w-3 rounded-full bg-amber-400" />
                       <span className="flex h-3 w-3 rounded-full bg-emerald-400" />
                     </div>
-                    <span className="ml-4 text-xl font-medium">AgentMarket · Workspace</span>
+                    <div className="ml-4 flex items-center gap-3">
+                      <LogoIcon size="small" />
+                      <span className="text-xl font-medium">AgentMarket · Workspace</span>
+                    </div>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-slate-400">
                     <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-4 py-1.5">
@@ -425,8 +429,11 @@ export const HomePage = () => {
         
         <div className="premium-section-inner">
           <div className="mb-16 md:mb-24 flex flex-col gap-6 md:flex-row md:items-end md:justify-between max-w-[1600px] mx-auto">
-            <div className="space-y-4 max-w-3xl">
-              <p className="premium-label text-emerald-400">Explore Specialties</p>
+            <div className="space-y-6 max-w-3xl">
+              <div className="flex items-center gap-4">
+                <LogoIcon size="large" />
+                <p className="premium-label text-emerald-400">Explore Specialties</p>
+              </div>
               <h2 className="premium-header">
                 Find the perfect <span className="text-emerald-300">AI specialist</span> for any task.
               </h2>

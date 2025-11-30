@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { LogoIcon } from "./LogoIcon";
 
 export const OrderConfirmationPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,10 @@ export const OrderConfirmationPage = () => {
   return (
     <div className="relative -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-6 lg:-mt-8 bg-gradient-to-b from-emerald-500/15 min-h-screen">
       <div className="relative w-full px-4 md:px-8 lg:px-12 pt-24 pb-20 flex flex-col items-center justify-center min-h-[80vh] space-y-8 text-center">
-        <div className="space-y-4">
+        <div className="space-y-6">
+          <div className="flex justify-center">
+            <LogoIcon size="xxlarge" />
+          </div>
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,8 +46,10 @@ export const OrderConfirmationPage = () => {
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </div>
-          <h1 className="text-4xl font-bold text-slate-50">Order Confirmed!</h1>
-          <p className="text-lg text-slate-400">You’re all set. Your agents are ready to be deployed.</p>
+          <div>
+            <h1 className="text-4xl font-bold text-slate-50">Order Confirmed!</h1>
+            <p className="text-lg text-slate-400 mt-2">You're all set. Your agents are ready to be deployed.</p>
+          </div>
         </div>
 
         <div className="w-full max-w-md rounded-xl border border-slate-800 bg-slate-950/60 p-6 text-left">

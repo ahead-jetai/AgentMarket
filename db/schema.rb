@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_30_185231) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_30_203227) do
   create_table "agent_purchases", force: :cascade do |t|
     t.integer "agent_id", null: false
     t.datetime "created_at", null: false
@@ -70,6 +70,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_30_185231) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.string "email"
     t.integer "team_id", null: false

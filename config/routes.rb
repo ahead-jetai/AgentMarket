@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     get "me", to: "sessions#show"
     post "purchases", to: "purchases#create"
 
+    namespace :admin do
+      get "dashboard", to: "dashboard#index"
+      get "table/:table_name", to: "dashboard#table_data"
+    end
+
     namespace :agents do
       scope ":agent_slug" do
         resources :runs, only: [:create, :index]

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { LogoIcon } from "./LogoIcon";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -52,9 +53,14 @@ export const LoginPage = () => {
     <div className="relative -mx-4 md:-mx-8 lg:-mx-12 -mt-4 md:-mt-6 lg:-mt-8 bg-gradient-to-b from-emerald-500/15 min-h-screen">
       <div className="relative w-full px-4 md:px-8 lg:px-12 pt-24 pb-20 flex items-center justify-center min-h-[80vh]">
         <div className="w-full max-w-sm space-y-8 rounded-xl border border-slate-800 bg-slate-950/60 p-8 shadow-2xl backdrop-blur-sm">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-slate-50">Welcome Back</h1>
-            <p className="mt-2 text-sm text-slate-400">Sign in to your agent dashboard</p>
+          <div className="text-center space-y-4">
+            <div className="flex justify-center">
+              <LogoIcon size="xlarge" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-slate-50">Welcome Back</h1>
+              <p className="mt-2 text-sm text-slate-400">Sign in to your agent dashboard</p>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">

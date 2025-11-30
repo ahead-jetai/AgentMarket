@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
+import { LogoIcon } from "./LogoIcon";
 
 const COFOUNDER_AGENT_SKU = "GEN-AGENT-001";
 const COFOUNDER_AGENT_SLUG = "cofounder_brainstorm";
@@ -136,7 +137,10 @@ export const WorkspacePage = () => {
             <span className="flex h-3 w-3 rounded-full bg-amber-400" />
             <span className="flex h-3 w-3 rounded-full bg-emerald-400" />
           </div>
-          <span className="ml-4 text-xl font-medium">AgentMarket · Workspace</span>
+          <div className="ml-4 flex items-center gap-3">
+            <LogoIcon size="small" />
+            <span className="text-xl font-medium">AgentMarket · Workspace</span>
+          </div>
         </div>
         <div className="flex items-center gap-3 text-sm text-slate-400">
           <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-4 py-1.5">
